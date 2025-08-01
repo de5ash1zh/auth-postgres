@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+
+//custom routes
+import userRouter from "./routes/auth.routes";
 import cookieParser from "cookie-parser";
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -22,6 +25,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use("/api/v1/users", userRouter);
 app.listen(port, () => {
   console.log(`Serving at port: ${port}`);
 });
